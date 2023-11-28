@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+    .target {
+        background-color: indianred;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>반복문 처리</p>
+    <ul>
+        <li th:each="dto : ${list}">
+            [[${dto}]]
+        </li>
+    </ul>
+
+    <p>반목문의 상태(state) 객체</p>
+    <ul>
+        <li th:each="dto, state : ${list}">
+            [[${state.index}]] --- [[${dto}]]
+        </li>
+    </ul>
+
+    <p>제어문 처리 - 반복문과 함께~</p>
+    <ul>
+        <li th:each="dto, state: ${list}" th:if="${dto.sno % 5 == 0}">
+            [[${dto}]]
+        </li>
+    </ul>
+
+    <p>제어문 처리 - if~unless</p>
+    <ul>
+        <li th:each="dto, state : ${list}">
+            <span th:if="${dto.sno % 5 == 0}" th:text="${'-------------------' + dto.sno}"></span>
+            <span th:unless="${dto.sno % 5 == 0}" th:text="${dto.first}"></span>
+        </li>
+    </ul>
+
+    <p>삼항연산자 - 5의 배수일 때만 출력</p>
+    <ul>
+        <li th:each="dto, state : ${list}" th:text="${dto.sno % 5 == 0} ? ${dto.sno}"></li>
+    </ul>
+
+    <p>삼항연산자 - 5의 배수일 때는 출력, 아닐 때는 First 출력</p>
+    <ul>
+        <li th:each="dto, state : ${list}" th:text="${dto.sno % 5 == 0} ? ${dto.sno} : ${dto.first}"></li>
+    </ul>
+
+    <p>삼항연산자 활용 - 특정한 상황에만 적용하는 CSS 클래스 지정</p>
+    <ul>
+        <li th:each="dto, state : ${list}" th:class="${dto.sno % 5 == 0} ? 'target'" th:text="${dto}"></li>
+    </ul>
+
+    <p>th:block은 별도의 태그가 필요하지 않다</p>
+    <ul>
+        <th:block th:each="dto : ${list}">
+            <li th:text="${dto.sno % 5} == 0 ? ${dto.sno} : ${dto.first}"></li>
+        </th:block>
+    </ul>
+
+</body>
+</html>

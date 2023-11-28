@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta lang="en" xmlns:th="http://www.thymeleaf.org">
+    <title>Title</title>
+</head>
+<body>
+
+    특정한 태그를 파라미터처럼 전달받아서 th:fragment에서 사용하기 - target()
+    <div th:fragment="target(first, second)">
+        <style>
+            .c1 {
+                background-color: palevioletred;
+            }
+            .c2 {
+                background-color: lightskyblue;
+            }
+        </style>
+
+        <div class="c1">
+            <th:block th:replace="${first}"></th:block>
+        </div>
+
+        <div class="c2">
+            <th:block th:replace="${second}"></th:block>
+        </div>
+
+    </div>
+</body>
+</html>
