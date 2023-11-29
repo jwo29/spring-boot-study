@@ -28,7 +28,7 @@ public class SampleController {
      * Thymeleaf 실습을 위해 URL 변경이 용이하게 작성함.
      * SampleDTO 타입의 객체를 20개 추가하고 이를 Model에 담아서 전송.
      * GetMapping의 value 속성을 {}로 처리하면 하나 이상의 URL을 지정할 수 있게 됨.
-     * @param model
+     * @param model 화면으로 전달되는 모델 데이터
      */
     @GetMapping({"/ex2", "/exLink"})
     public void exModel(Model model) {
@@ -80,7 +80,7 @@ public class SampleController {
      * 타임리프 레이아웃 실습
      * th:include - 외부/내부에서 코드 조각(fragment) 가져오기
      */
-    @GetMapping({"/exLayout1", "/exLayout2", "/exTemplate"})
+    @GetMapping({"/exLayout1", "/exLayout2", "/exTemplate", "/exSidebar"})
     public void exLayout1() {
 
         log.info("exLayout......");
